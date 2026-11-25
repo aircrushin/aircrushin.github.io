@@ -1,0 +1,12 @@
+---
+import PostList from '../../components/PostList.astro';
+import Base from '../../layouts/Base.astro';
+import { getPublishedPosts } from '../../lib/posts';
+
+const posts = await getPublishedPosts();
+---
+
+<Base title="文章" description="indieai 的全部博客文章。">
+	<h1>文章</h1>
+	<PostList posts={posts} empty="还没有已发布的文章。新文章写好后会出现在这里。" />
+</Base>

@@ -1,0 +1,27 @@
+---
+import PostList from '../../components/PostList.astro';
+import Base from '../../layouts/Base.astro';
+import { getAllTags, getPublishedPosts } from '../../lib/posts';
+
+export async function getStaticPaths() {
+	const posts = await getPublishedPosts();
+	const tags = getAllTags(posts);
+	return tags.map(([tag]) => ({
+		params: { tag },
+		props: { tag, posts: posts.filter((post) => post.data.tags.includes(tag)) },
+	}));
+}
+
+interface Props {
+	tag: string;
+	posts: Awaited<ReturnType<typeof getPublishedPosts>>;
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<Base title={`标签：${tag}`} description={`indieai 博客中标记为「${tag}」的文章。`}>
+	<h1>标签：{tag}</h1>
+	<p class="lede"><a href="/tags/">全部标签</a></p>
+	<PostList posts={posts} />
+</Base>

@@ -1,0 +1,31 @@
+---
+import { projects } from '../data/projects';
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="作品" description="indieai 的公开作品：Prompt Minder、Code、《已读》等。">
+	<h1>作品</h1>
+	<p class="lede">这些是我公开在做、或已经开源的部分项目。</p>
+	<div class="project-list">
+		{
+			projects.map((project) => (
+				<article class="project-card">
+					<h2>{project.title}</h2>
+					<p>{project.description}</p>
+					<div class="project-links">
+						{project.url && (
+							<a href={project.url} rel="noopener noreferrer" target="_blank">
+								访问网站
+							</a>
+						)}
+						{project.repo && (
+							<a href={project.repo} rel="noopener noreferrer" target="_blank">
+								GitHub
+							</a>
+						)}
+					</div>
+				</article>
+			))
+		}
+	</div>
+</Base>

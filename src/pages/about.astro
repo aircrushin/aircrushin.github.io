@@ -1,0 +1,28 @@
+---
+import { GITHUB_URL, X_URL } from '../consts';
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="关于" description="关于 indieai：现居成都的独立开发者，写产品和工具。">
+	<article class="prose">
+		<h1>关于</h1>
+		<p>
+			我是 indieai。现居成都，独立做产品。
+		</p>
+		<p>
+			2026 年毕业于蒙纳士大学（Monash University）人工智能专业。
+		</p>
+		<p>
+			我用 AI 做独立开发，目前在做
+			<a href="https://prompt-minder.com" rel="noopener noreferrer" target="_blank">Prompt Minder</a>
+			、Code，以及像
+			<a href="https://aircrushin.github.io/yidu/" rel="noopener noreferrer">《已读》</a>
+			这样的游戏。更多作品见
+			<a href="/projects/">作品页</a>。
+		</p>
+		<p class="social-row">
+			<a href={GITHUB_URL} rel="me noopener noreferrer" target="_blank">GitHub</a>
+			<a href={X_URL} rel="me noopener noreferrer" target="_blank">X</a>
+		</p>
+	</article>
+</Base>

@@ -1,0 +1,42 @@
+---
+import type { BlogPost } from '../lib/posts';
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+	posts: BlogPost[];
+	empty?: string;
+}
+
+const { posts, empty = '还没有已发布的文章。' } = Astro.props;
+---
+
+{
+	posts.length === 0 ? (
+		<p class="empty-state">{empty}</p>
+	) : (
+		<ul class="post-list">
+			{posts.map((post) => (
+				<li>
+					<a class="item" href={`/posts/${post.id}/`}>
+						<span class="post-date">
+							<FormattedDate date={post.data.pubDate} />
+						</span>
+						<span>
+							<h2 class="post-title">{post.data.title}</h2>
+							<p class="post-desc">{post.data.description}</p>
+							{post.data.tags.length > 0 && (
+								<ul class="tags">
+									{post.data.tags.map((tag) => (
+										<li>
+											<span class="tag">{tag}</span>
+										</li>
+									))}
+								</ul>
+							)}
+						</span>
+					</a>
+				</li>
+			))}
+		</ul>
+	)
+}

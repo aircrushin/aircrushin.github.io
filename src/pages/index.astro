@@ -1,0 +1,24 @@
+---
+import PostList from '../components/PostList.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import Base from '../layouts/Base.astro';
+import { getPublishedPosts } from '../lib/posts';
+
+const posts = await getPublishedPosts();
+---
+
+<Base title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<p class="intro-kicker">indieai</p>
+	<p class="lede">
+		我是 indieai，现居成都的独立开发者。这里记录我用 AI 做产品时的日志、工具和想法。
+	</p>
+
+	<div class="section-title">
+		<span>文章</span>
+		<a href="/rss.xml">RSS</a>
+	</div>
+	<PostList
+		posts={posts}
+		empty="第一篇文章还在写。你可以先看「关于」和「作品」，或订阅 RSS。"
+	/>
+</Base>
