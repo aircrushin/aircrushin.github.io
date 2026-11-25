@@ -213,6 +213,12 @@ main.page {
 	color: var(--ink);
 }
 
+.footer-links {
+	display: flex;
+	gap: 0.9rem;
+	margin: 0;
+}
+
 .intro-kicker {
 	font-family: var(--font-display), Georgia, serif;
 	font-style: italic;
