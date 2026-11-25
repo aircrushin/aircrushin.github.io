@@ -5,7 +5,7 @@ pubDate: 2026-11-25
 tags:
   - indieai
   - 独立开发
-draft: true
+draft: false
 ---
 
 你好，我是 indieai。现居成都，独立做产品。
